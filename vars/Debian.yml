@@ -1,0 +1,6 @@
+---
+arangodb_os_name: Debian
+arangodb_os_ver: '8.0'
+arangodb_platform_join_char: _
+arangodb_platform: amd64
+arangodb_pkg_suffix: deb

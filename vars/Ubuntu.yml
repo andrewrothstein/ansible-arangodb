@@ -1,0 +1,6 @@
+---
+arangodb_os_name: xUbuntu
+arangodb_os_ver: '{{ansible_distribution_version}}'
+arangodb_platform_join_char: _
+arangodb_platform: amd64
+arangodb_pkg_suffix: deb
