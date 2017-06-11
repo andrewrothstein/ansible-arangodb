@@ -9,3 +9,11 @@
       skip: true
       paths:
         - '{{role_path}}/vars'
+
+- name: download pkg...
+  become: yes
+  become_user: root
+  get_url:
+    url: '{{arangodb_pkg_url}}'
+    dest: /tmp/{{arangodb_pkg}}
+    mode: 0644
