@@ -1,0 +1,8 @@
+---
+- name: install pkg...
+  become: yes
+  become_user: root
+  yum:
+    name: /tmp/{{arangodb_pkg}}
+    state: present
+  

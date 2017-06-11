@@ -17,3 +17,6 @@
     url: '{{arangodb_pkg_url}}'
     dest: /tmp/{{arangodb_pkg}}
     mode: 0644
+
+- name: package manager install...
+  include: '{{arangodb_pkg_mgr}}.yml'

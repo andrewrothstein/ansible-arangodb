@@ -4,3 +4,4 @@ arangodb_os_ver: 7
 arangodb_platform_join_char: .
 arangodb_platform: x86_64
 arangodb_pkg_suffix: rpm
+arangodb_pkg_mgr: yum
