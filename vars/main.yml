@@ -6,5 +6,3 @@ arangodb_ver: '{{arangodb_major_ver}}.{{arangodb_minor_ver}}.{{arangodb_patch_ve
 arangodb_os: '{{arangodb_os_name}}_{{arangodb_os_ver}}'
 arangodb_pkg: arangodb{{arangodb_major_ver}}-{{arangodb_ver}}-{{arangodb_patch_rev}}{{arangodb_platform_join_char}}{{arangodb_platform}}.{{arangodb_pkg_suffix}}
 arangodb_pkg_url: '{{arangodb_mirror}}/arangodb{{arangodb_ver_abbrev}}/{{arangodb_os}}/{{arangodb_platform}}/{{arangodb_pkg}}'
-
-
