@@ -19,4 +19,4 @@
     mode: 0644
 
 - name: package manager install...
-  include: '{{arangodb_pkg_mgr}}.yml'
+  include_tasks: '{{arangodb_pkg_mgr}}.yml'
