@@ -3,5 +3,6 @@
 - debian_jessie
 - debian_stretch
 - fedora_25
+- ubi8_8.0
 - ubuntu_trusty
 - ubuntu_xenial

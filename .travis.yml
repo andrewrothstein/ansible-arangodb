@@ -12,6 +12,7 @@ env:
 - OS=debian_jessie
 - OS=debian_stretch
 - OS=fedora_25
+- OS=ubi8_8.0
 - OS=ubuntu_trusty
 - OS=ubuntu_xenial
 language: python
