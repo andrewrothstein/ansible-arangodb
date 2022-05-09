@@ -1,6 +1,6 @@
 andrewrothstein.arangodb
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-arangodb.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-arangodb)
+![Build Status](https://github.com/andrewrothstein/ansible-arangodb/actions/workflows/build.yml/badge.svg)
 
 Installs [ArangoDB](https://www.arangodb.com)
 
@@ -23,6 +23,11 @@ Example Playbook
 ----------------
 
 ```yml
+- hosts: clients
+  vars:
+    arangodb_role: client
+  roles:
+    - andrewrothsstein.arangodb
 - hosts: servers
   roles:
     - andrewrothstein.arangodb

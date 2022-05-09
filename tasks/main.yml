@@ -1,22 +1,52 @@
 ---
 - name: resolve platform specific vars
-  include_vars: '{{item}}'
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
-        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - '{{ansible_distribution}}.yml'
-        - '{{ansible_os_family}}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       skip: true
       paths:
-        - '{{role_path}}/vars'
+        - '{{ role_path }}/vars'
 
-- name: download pkg...
-  become: yes
+- name: looking for instal in {{ arangodb_install_dir }}
+  become: true
+  stat:
+    path: '{{ arangodb_install_dir }}'
+  changed_when: false
+  register: arangodb_binary
+- when: not arangodb_binary.stat.exists
+  block:
+    - name: downloading {{ arangodb_tgz_url }} to {{ arangodb_tmp_tgz }}
+      become: true
+      become_user: root
+      get_url:
+        url: '{{ arangodb_tgz_url }}'
+        dest: '{{ arangodb_tmp_tgz }}'
+        checksum: '{{ arangodb_checksum }}'
+        mode: 0644
+    - name: unarchiving {{ arangodb_tmp_tgz }} to {{ arangodb_parent_install_dir }}
+      become: true
+      become_user: root
+      unarchive:
+        remote_src: true
+        src: '{{ arangodb_tmp_tgz }}'
+        dest: '{{ arangodb_parent_install_dir }}'
+        creates: '{{ arangodb_install_dir }}'
+  always:
+    - name: rm {{ arangodb_tmp_tgz }}
+      become: true
+      become_user: root
+      file:
+        path: '{{ arangodb_tmp_tgz }}'
+        state: absent
+- name: creating links from executables in {{ arangodb_install_bin_dir }} to {{ arangodb_install_links_dir }}
+  become: true
   become_user: root
-  get_url:
-    url: '{{arangodb_pkg_url}}'
-    dest: /tmp/{{arangodb_pkg}}
-    mode: 0644
+  with_items: '{{ arangodb_exes[arangodb_role] }}'
+  file:
+    src: '{{ arangodb_install_bin_dir }}/{{ item }}'
+    dest: '{{ arangodb_install_links_dir }}/{{ item }}'
+    state: link
 
-- name: package manager install...
-  include_tasks: '{{arangodb_pkg_mgr}}.yml'

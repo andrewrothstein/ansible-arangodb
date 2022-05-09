@@ -1,9 +1,12 @@
-- centos_7
-- centos_8
+---
+- alpine_3.14
+- alpine_3.15
+- alpine_edge
+- archlinux_latest
+- debian_bullseye
 - debian_buster
-- debian_jessie
-- debian_stretch
-- fedora_25
-- ubi8_8.0
-- ubuntu_trusty
-- ubuntu_xenial
+- fedora_35
+- fedora_36
+- rockylinux_8
+- ubuntu_bionic
+- ubuntu_focal

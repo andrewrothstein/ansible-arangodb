@@ -1,4 +1,21 @@
 ---
 - hosts: all
+  vars:
+    arangodb_role: client
   roles:
-    - role: '{{playbook_dir}}'
+    - role: '{{ playbook_dir }}'
+  tasks:
+    - command: arangosh --version
+      register: arangodb_client_test_output
+    - name: arangosh --version
+      debug:
+        msg: '{{ arangodb_client_test_output.stdout }}'
+- hosts: all
+  roles:
+    - role: '{{ playbook_dir }}'
+  tasks:
+    - command: arangod --version
+      register: arangodb_test_output
+    - name: arangod --version
+      debug:
+        msg: '{{ arangodb_test_output.stdout }}'

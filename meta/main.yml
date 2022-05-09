@@ -7,21 +7,30 @@ galaxy_info:
     - MIT
   min_ansible_version: 2.0
   platforms:
+    - name: Alpine
+      versions:
+        - all
+    - name: Archlinuxe
+      veresions:
+        - all
     - name: EL
       versions:
-        - 7
+        - 8
     - name: Fedora
       versions:
-        - 25
+        - 35
+        - 36
     - name: Debian
       versions:
-        - jessie
+        - bullseye
+        - buster
     - name: Ubuntu
       versions:
-        - trusty
-        - xenial
+        - bionic
+        - focal
   galaxy_tags:
     - database
     - graph
 
-dependencies: []
+dependencies:
+  - andrewrothstein.unarchive-deps

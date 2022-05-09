@@ -1,8 +1,16 @@
 ---
 # vars file for arangodb
-arangodb_ver_abbrev: '{{arangodb_major_ver}}{{arangodb_minor_ver}}'
-arangodb_ver: '{{arangodb_major_ver}}.{{arangodb_minor_ver}}.{{arangodb_patch_ver}}'
+arangodb_ver_abbrev: '{{ arangodb_ver.major }}{{ arangodb_ver.minor }}'
+arangodb_fq_ver: '{{ arangodb_ver.major }}.{{ arangodb_ver.minor }}.{{ arangodb_ver.patch }}'
 
-arangodb_os: '{{arangodb_os_name}}_{{arangodb_os_ver}}'
-arangodb_pkg: arangodb{{arangodb_major_ver}}-{{arangodb_ver}}-{{arangodb_patch_rev}}{{arangodb_platform_join_char}}{{arangodb_platform}}.{{arangodb_pkg_suffix}}
-arangodb_pkg_url: '{{arangodb_mirror}}/arangodb{{arangodb_ver_abbrev}}/{{arangodb_os}}/{{arangodb_platform}}/{{arangodb_pkg}}'
+arangodb_suffix: '{% if arangodb_role == "client" %}-client{% endif %}'
+arangodb_name: arangodb{{ arangodb_ver.major }}{{ arangodb_suffix }}-{{ arangodb_os.short }}-{{ arangodb_fq_ver }}
+arangodb_tgz: '{{ arangodb_name }}.tar.gz'
+arangodb_tgz_url: '{{ arangodb_mirror }}/arangodb{{ arangodb_ver_abbrev }}/{{ arangodb_edition }}/{{ arangodb_os.long }}/{{ arangodb_tgz }}'
+
+arangodb_tmp_tgz: /tmp/{{ arangodb_tgz }}
+arangodb_checksum: '{{ arangodb_checksums[arangodb_fq_ver][arangodb_os.short][arangodb_role] }}'
+
+arangodb_install_dir: '{{ arangodb_parent_install_dir }}/{{ arangodb_name }}'
+arangodb_install_bin_dir: '{{ arangodb_install_dir }}/bin'
+arangodb_install_links_dir: '{{ arangodb_parent_install_dir }}/bin'

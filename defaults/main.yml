@@ -1,8 +1,64 @@
 ---
 # defaults file for arangodb
-arangodb_major_ver: 3
-arangodb_minor_ver: 5
-arangodb_patch_ver: 3
-arangodb_patch_rev: 1
+arangodb_ver:
+  major: 3
+  minor: 9
+  patch: 1
 
-arangodb_mirror: https://www.arangodb.com/repositories
+arangodb_os:
+  short: linux
+  long: Linux
+
+arangodb_role: server
+arangodb_edition: Community
+
+arangodb_parent_install_dir: /usr/local
+
+arangodb_exes:
+  client:
+    - arangobench
+    - arangodump
+    - arangoexport
+    - arangoimp
+    - arangoimport
+    - arangoinspect
+    - arangorestore
+    - arangosh
+    - arangovpack
+  server:
+    - arangobench
+    - arangod
+    - arangodb
+    - arangodump
+    - arangoexport
+    - arangoimp
+    - arangoimport
+    - arangoinspect
+    - arangorestore
+    - arangosh
+    - arangovpack
+
+arangodb_mirror: https://download.arangodb.com
+arangodb_checksums:
+  '3.9.0':
+    linux:
+      # https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-linux-3.9.0.tar.gz
+      server: sha256:94e0391561e6b939b252e63f102eea7c9378f3a4a0b8c707fa506483d606a183
+      # https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-client-linux-3.9.0.tar.gz
+      client: sha256:0760ee2d0e530907324b1d44c7843ec92b3ddba86f17d4ea56994e0e7c129dba
+    macos:
+      # https://download.arangodb.com/arangodb39/Community/MacOSX/arangodb3-macos-3.9.0.tar.gz
+      server: sha256:e686e0736e36ed4b5d19f63d5d3fa0d9469ec9723f609ecb95244d5f0403baa2
+      # https://download.arangodb.com/arangodb39/Community/MacOSX/arangodb3-client-macos-3.9.0.tar.gz
+      client: sha256:183af3c6f257921e7b50246f54dc757777da26e05a6a0ed0a989002a8f8c22af
+  '3.9.1':
+    linux:
+      # https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-linux-3.9.1.tar.gz
+      server: sha256:0fa2047692e45a93a4e109af59de3e8297fa4d099e120f3d557207e0eb410b15
+      # https://download.arangodb.com/arangodb39/Community/Linux/arangodb3-client-linux-3.9.1.tar.gz
+      client: sha256:1a90360b1810f3e1fe92b23a1393d1ce9de9a5dc1b14073e269a2190645399b5
+    macos:
+      # https://download.arangodb.com/arangodb39/Community/MacOSX/arangodb3-macos-3.9.1.tar.gz
+      server: sha256:049aefaa172244e4e28d7a92512cca8179a94b43d4242e7e0e4f9c7b454fb410
+      # https://download.arangodb.com/arangodb39/Community/MacOSX/arangodb3-client-macos-3.9.1.tar.gz
+      client: sha256:e811f6e05a5e84db836f23e3ced3d0489678329dfc44e935c00d9193a843ecea
