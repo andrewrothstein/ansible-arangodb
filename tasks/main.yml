@@ -49,4 +49,3 @@
     src: '{{ arangodb_install_bin_dir }}/{{ item }}'
     dest: '{{ arangodb_install_links_dir }}/{{ item }}'
     state: link
-
